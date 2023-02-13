@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {ChangeEvent, ChangeEventHandler, useEffect, useState} from 'react';
 import './App.css';
+import {App1Box} from "./App1Box";
+import {App2Box} from "./App2Box";
+import UniversalButton from "./universalButton/universalButton";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    // box mode, if else => 2 box
+    let [mode, setMode] = useState<boolean>(true)
+    return (
+     <div>
+         <span><UniversalButton name={"Change mode"} callBack={()=>{setMode(!mode)}} disabled={false}/></span>
+         {mode ? <App1Box /> : <App2Box />}
+     </div>
+    )
 }
 
 export default App;
